@@ -79,6 +79,10 @@ const route = createBrowserRouter([
             path: 'createcategory',
             element:<CreateCategory/>
           },
+          {
+            path: 'allusers',
+            element:<Table/>
+          },
           
         ]
       },

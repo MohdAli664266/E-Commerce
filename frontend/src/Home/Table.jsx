@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import BackgroundImage from '../assets/login.jpg';
 import axios from 'axios';
 
 const Table = () => {
@@ -31,7 +31,7 @@ const Table = () => {
   }
 
   return (
-    <div className="p-6 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 min-h-screen">
+    <div className="relative min-h-screen p-4 bg-cover bg-center">
       <h2 className="text-2xl font-bold text-white mb-4">User Details</h2>
       <div className="overflow-x-auto">
         {error ? ( // Display an error message if data fetch fails

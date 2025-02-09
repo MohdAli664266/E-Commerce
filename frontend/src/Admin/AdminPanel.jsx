@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
-
+import BackgroundImage from '../assets/login.jpg';
 function AdminPanel() {
   const [isOpen, setIsOpen] = useState(false);
   const [prodDetails, setprodDetails] = useState(false);
   const [userDetails, setUserDetails] = useState(false);
+  const [dashboard, setDashboard] = useState(false);
 
 
   return (
@@ -13,8 +14,35 @@ function AdminPanel() {
       <div className="w-1/4 border-r pr-4 bg-gray-400/10 p-4">
         <h2 className="text-lg font-bold mb-2">Admin Panel</h2>
 
-        {/* Product Dropdown */}
+        {/* Dashboard */}
         <div className="font-semibold transition-all duration-500 ease-in-out">
+          <div
+            className="cursor-pointer flex justify-between items-center p-2 hover:bg-gray-400 bg-gray-300"
+            onClick={() => setDashboard(!dashboard)}
+          >
+            Dashboard
+          </div>
+
+          {/* Animated Submenu */}
+          <ul
+            className={`pl-10 bg-gray-200 overflow-hidden transition-[max-height] duration-500 ease-in-out ${
+              dashboard ? "max-h-40 opacity-100" : "max-h-0"
+            }`}
+          >
+            <li className="hover:bg-gray-400 p-2 font-thin">
+              <NavLink to="createcategory">Create Category</NavLink>
+            </li>
+            <li className="hover:bg-gray-400 p-2 font-thin">
+              <NavLink to="addproduct">Add Product</NavLink>
+            </li>
+            <li className="hover:bg-gray-400 p-2 font-thin">
+              <NavLink to="updateproduct">Update Product</NavLink>
+            </li>
+          </ul>
+        </div>
+
+         {/* Product Dropdown */}
+         <div className="font-semibold transition-all duration-500 ease-in-out">
           <div
             className="cursor-pointer flex justify-between items-center p-2 hover:bg-gray-400 bg-gray-300"
             onClick={() => setIsOpen(!isOpen)}
@@ -33,6 +61,9 @@ function AdminPanel() {
             </li>
             <li className="hover:bg-gray-400 p-2 font-thin">
               <NavLink to="addproduct">Add Product</NavLink>
+            </li>
+            <li className="hover:bg-gray-400 p-2 font-thin">
+              <NavLink to="updateproduct">Update Product</NavLink>
             </li>
           </ul>
         </div>
@@ -53,7 +84,7 @@ function AdminPanel() {
             }`}
           >
             <li className="hover:bg-gray-400 p-2 font-thin">
-              <NavLink to="createcategory">Create Category</NavLink>
+              <NavLink to="allproducts">All Products</NavLink>
             </li>
             <li className="hover:bg-gray-400 p-2 font-thin">
               <NavLink to="addproduct">Add Product</NavLink>
@@ -78,18 +109,20 @@ function AdminPanel() {
             }`}
           >
             <li className="hover:bg-gray-400 p-2 font-thin">
-              <NavLink to="createcategory">Create Category</NavLink>
+              <NavLink to="allusers">All Users</NavLink>
             </li>
             <li className="hover:bg-gray-400 p-2 font-thin">
               <NavLink to="addproduct">Add Product</NavLink>
             </li>
+
+            
           </ul>
         </div>
       </div>
 
       {/* Rendering Pages */}
-      <div className="w-full">
-      <Outlet />
+      <div className="w-full" style={{ backgroundImage: `url(${BackgroundImage})`}}>
+        <Outlet />
       </div>
       
     </div>
